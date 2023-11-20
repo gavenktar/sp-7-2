@@ -17,7 +17,7 @@ public class CityResidentDaoImpl implements CityResidentDao {
         Transaction transaction = null;
         try (Session session = SessionFactoryImpl.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.save(cityResident);
+            session.persist(cityResident);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -44,7 +44,7 @@ public class CityResidentDaoImpl implements CityResidentDao {
         Transaction transaction = null;
         try (Session session = SessionFactoryImpl.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.delete(cityResident);
+            session.remove(cityResident);
             transaction.commit();
             return true;
         } catch (Exception e) {

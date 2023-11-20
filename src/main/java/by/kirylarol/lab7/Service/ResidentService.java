@@ -6,6 +6,8 @@ import by.kirylarol.lab7.Entity.Resident;
 public class ResidentService {
     ResidentDao residentDao;
 
+
+
     public ResidentService(ResidentDao residentDao) {
         this.residentDao = residentDao;
     }

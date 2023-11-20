@@ -13,7 +13,7 @@ public class CityDaoImpl implements CityDao {
         Transaction transaction = null;
         try (Session session = SessionFactoryImpl.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.save(city);
+            session.persist(city);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -32,7 +32,7 @@ public class CityDaoImpl implements CityDao {
             transaction = session.beginTransaction();
             City city = session.get(City.class, cityId);
             if (city != null) {
-                session.delete(city);
+                session.remove(city);
                 transaction.commit();
                 return true;
             }
@@ -51,7 +51,7 @@ public class CityDaoImpl implements CityDao {
         Transaction transaction = null;
         try (Session session = SessionFactoryImpl.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.update(city);
+            session.merge(city);
             transaction.commit();
             return true;
         } catch (Exception e) {

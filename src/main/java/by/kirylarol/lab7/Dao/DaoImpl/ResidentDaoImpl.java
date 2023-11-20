@@ -12,7 +12,7 @@ public class ResidentDaoImpl implements ResidentDao {
         Transaction transaction = null;
         try (Session session = SessionFactoryImpl.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.update(resident);
+            session.merge(resident);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -29,7 +29,7 @@ public class ResidentDaoImpl implements ResidentDao {
         Transaction transaction = null;
         try (Session session = SessionFactoryImpl.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.save(resident);
+            session.persist(resident);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -48,7 +48,7 @@ public class ResidentDaoImpl implements ResidentDao {
             transaction = session.beginTransaction();
             Resident resident = session.get(Resident.class, residentID);
             if (resident != null) {
-                session.delete(resident);
+                session.remove(resident);
                 transaction.commit();
                 return true;
             }
