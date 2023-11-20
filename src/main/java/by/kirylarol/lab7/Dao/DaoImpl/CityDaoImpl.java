@@ -6,6 +6,8 @@ import by.kirylarol.lab7.SessionConf.SessionFactoryImpl;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 public class CityDaoImpl implements CityDao {
 
     @Override
@@ -23,6 +25,17 @@ public class CityDaoImpl implements CityDao {
             e.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public List<City> getAllCities(){
+        Transaction transaction = null;
+        try (Session session = SessionFactoryImpl.getSessionFactory().openSession()) {
+            return session.createQuery("SELECT c FROM City c", City.class).getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

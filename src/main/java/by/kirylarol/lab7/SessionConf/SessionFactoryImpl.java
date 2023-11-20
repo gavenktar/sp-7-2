@@ -22,7 +22,6 @@ public class SessionFactoryImpl {
                             configuration.addAnnotatedClass(CityResident.class);
                             configuration.addAnnotatedClass(Resident.class);
                             configuration.setProperty("hibernate.hbm2ddl.auto", "update");
-
                             StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                             sessionFactory =configuration.buildSessionFactory(builder.build());
 

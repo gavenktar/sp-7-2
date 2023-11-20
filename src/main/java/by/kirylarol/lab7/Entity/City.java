@@ -13,7 +13,8 @@ public class City {
     @Column (name = "city_id")
     private int cityID;
 
-
+    @Column
+    private String name;
     @Column (name = "foundation_year")
     private int foundationYear;
 
@@ -55,5 +56,13 @@ public class City {
 
     public void setCityResidentList(List<CityResident> cityResidentList) {
         this.cityResidentList = cityResidentList;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

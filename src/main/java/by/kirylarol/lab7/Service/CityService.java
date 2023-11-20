@@ -2,6 +2,9 @@ package by.kirylarol.lab7.Service;
 
 import by.kirylarol.lab7.Dao.CityDao;
 import by.kirylarol.lab7.Entity.City;
+import by.kirylarol.lab7.Entity.CityResident;
+
+import java.util.List;
 
 public class CityService {
 
@@ -22,6 +25,11 @@ public class CityService {
     public boolean updateCity(City city) {
         return cityDao.updateCity(city);
     }
+
+    public List<City> getAll(){
+        return cityDao.getAllCities();
+    }
+
 
 
 }
