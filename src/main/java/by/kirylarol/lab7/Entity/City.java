@@ -25,4 +25,35 @@ public class City {
     List<CityResident> cityResidentList;
 
 
+    public int getCityID() {
+        return cityID;
+    }
+
+    public void setCityID(int cityID) {
+        this.cityID = cityID;
+    }
+
+    public int getFoundationYear() {
+        return foundationYear;
+    }
+
+    public void setFoundationYear(int foundationYear) {
+        this.foundationYear = foundationYear;
+    }
+
+    public double getSquare() {
+        return square;
+    }
+
+    public void setSquare(double square) {
+        this.square = square;
+    }
+
+    public List<CityResident> getCityResidentList() {
+        return cityResidentList;
+    }
+
+    public void setCityResidentList(List<CityResident> cityResidentList) {
+        this.cityResidentList = cityResidentList;
+    }
 }
