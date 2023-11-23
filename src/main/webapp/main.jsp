@@ -5,8 +5,8 @@
 <head>
     <script>
         function findByPopulation() {
-            const populationInput = document.getElementById("populationInput").value;
-            const newUrl = 'http://localhost:8080/populations?population=' + populationInput;
+            const populationInput = document.getElementById("population").value;
+            const newUrl = '<%= request.getContextPath()%>/finbypopulation?population=' + populationInput;
             window.location.href = newUrl;
         }
     </script>
@@ -15,7 +15,7 @@
 </head>
 <body>
 <% List<City> cityList = (List<City>) request.getAttribute("cities"); %>
-<% if (!cityList.isEmpty()) { %>
+<% if (cityList!= null && !cityList.isEmpty()) { %>
 <table>
     <tr>
         <th>Название города</th>
@@ -28,23 +28,23 @@
         <td><%= city.getName() %></td>
         <td><%= city.getFoundationYear() %></td>
         <td><%= city.getSquare() %></td>
-        <td><a href="http://localhost:8080/city/<%=city.getCityID()%>">Перейти на страницу города</a></td>
+        <td><a href="<%= request.getContextPath()%>/city?id=<%=city.getCityID()%>">Перейти на страницу города</a></td>
     </tr>
     <% } %>
 </table>
 <% } %>
 
 <div>
-    <a href="https://localhost:8080/addcity">Добавить город</a>
-    <a href="https://localhost:8080/addresidents">Добавить этнос</a>
+    <a href="<%= request.getContextPath()%>/newcity">Добавить город</a>
+    <a href="<%= request.getContextPath()%>/addresident">Добавить этнос</a>
 </div>
 
 <div>
-    <form onsubmit="event.preventDefault(); findByPopulation();">
-        <input id="populationInput" type="number" placeholder="Введите численность">
-        <button type="submit">Поиск по численности</button>
+    <form action="<%= request.getContextPath()%>/findbypopulation" method="get">
+        <input id="population" type="number" placeholder="Введите численность">
     </form>
-    <a href="https://localhost:8080/oldest" > Перейти к самым старым жителям</a>
+    <button onclick="findByPopulation()">Поиск по численности</button>
+    <a href="<%= request.getContextPath()%>/oldest" > Перейти к самым старым жителям</a>
 </div>
 </body>
 </html>

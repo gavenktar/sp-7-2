@@ -26,6 +26,8 @@ public class CityService {
         return cityDao.updateCity(city);
     }
 
+    public City getCityByID (int cityId) { return cityDao.getCityById(cityId); }
+
     public List<City> getAll(){
         return cityDao.getAllCities();
     }

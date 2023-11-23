@@ -10,6 +10,7 @@ public interface CityDao {
     boolean deleteCity (int cityId);
     boolean updateCity (City city);
 
+    City getCityById (int cityID);
     List<City> getAllCities ();
 
 }

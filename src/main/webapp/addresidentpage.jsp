@@ -9,10 +9,9 @@
 <html>
 <head>
     <title>Добавить этнос</title>
-    <form action="https://localhost:8080/addresident">
-        <input type="text" pattern="[а-яA-Z].3+" placeholder="Название населения">
-        <input type="number" min="0" placeholder="Численность">
-        <input type="text" pattern="[а-яA-Z].3+" placeholder="Язык">
+    <form action="<%= request.getContextPath()%>/addresident" method="post">
+        <input type="text" name="name"  placeholder="Название населения">
+        <input type="text" name="language" placeholder="Язык">
         <input type="submit" value="Отправить">
     </form>
 </head>

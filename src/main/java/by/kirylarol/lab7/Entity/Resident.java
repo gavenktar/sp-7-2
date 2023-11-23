@@ -7,7 +7,9 @@ import java.util.List;
 @Entity
 @Table(name ="residents")
 public class Resident {
+
     @Id
+    @GeneratedValue (strategy =  GenerationType.AUTO)
     @Column(name = "resident_id")
     private int residentID;
 
@@ -16,9 +18,6 @@ public class Resident {
 
     @Column
     private String language;
-
-    @OneToMany(mappedBy = "resident", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    public List<CityResident> cityResidentList;
 
     public int getResidentID() {
         return residentID;
@@ -42,13 +41,5 @@ public class Resident {
 
     public void setLanguage(String language) {
         this.language = language;
-    }
-
-    public List<CityResident> getCityResidentList() {
-        return cityResidentList;
-    }
-
-    public void setCityResidentList(List<CityResident> cityResidentList) {
-        this.cityResidentList = cityResidentList;
     }
 }

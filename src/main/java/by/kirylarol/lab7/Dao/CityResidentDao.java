@@ -20,7 +20,7 @@ public interface CityResidentDao {
 
     List<Resident> getAllResidentByCityAndLanguage (int cityId, String language);
 
-    List<CityResident> getAllCityByPopulation (BigDecimal population);
+    List<City> getAllCityByPopulation (Long population);
 
     List<Resident> getOldestResidents ();
 }

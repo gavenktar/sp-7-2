@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 public class CityResident {
 
     @Id
+    @GeneratedValue (strategy =  GenerationType.AUTO)
     private int cityResidentId;
     @ManyToOne
     @JoinColumn (name = "city_id")
@@ -19,7 +20,7 @@ public class CityResident {
     @JoinColumn (name = "resident_id")
     private Resident resident;
 
-    private BigDecimal population;
+    private Long population;
 
 
     public int getCityResidentId() {
@@ -46,11 +47,11 @@ public class CityResident {
         this.resident = resident;
     }
 
-    public BigDecimal getPopulation() {
+    public Long getPopulation() {
         return population;
     }
 
-    public void setPopulation(BigDecimal population) {
+    public void setPopulation(Long population) {
         this.population = population;
     }
 }

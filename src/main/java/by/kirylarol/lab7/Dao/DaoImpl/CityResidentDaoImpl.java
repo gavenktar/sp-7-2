@@ -1,6 +1,7 @@
 package by.kirylarol.lab7.Dao.DaoImpl;
 
 import by.kirylarol.lab7.Dao.CityResidentDao;
+import by.kirylarol.lab7.Entity.City;
 import by.kirylarol.lab7.Entity.CityResident;
 import by.kirylarol.lab7.Entity.Resident;
 import by.kirylarol.lab7.SessionConf.SessionFactoryImpl;
@@ -85,7 +86,11 @@ public class CityResidentDaoImpl implements CityResidentDao {
     public List<Resident> getAllResidentByCityAndLanguage(int cityId, String language) {
         try (Session session = SessionFactoryImpl.getSessionFactory().openSession()) {
             Query<Resident> query = session.createQuery(
-                    "SELECT cr.resident FROM CityResident cr JOIN cr.city c WHERE c.cityID = :cityId AND cr.resident.language = :language",
+                    "SELECT r\n" +
+                            "FROM CityResident c\n" +
+                            "JOIN c.resident r\n" +
+                            "JOIN c.city ci\n" +
+                            "WHERE r.language = :language AND ci.cityID = :cityId",
                     Resident.class
             );
             query.setParameter("cityId", cityId);
@@ -98,10 +103,11 @@ public class CityResidentDaoImpl implements CityResidentDao {
     }
 
 
+
     @Override
-    public List<CityResident> getAllCityByPopulation(BigDecimal population) {
+    public List<City> getAllCityByPopulation(Long population) {
         try (Session session = SessionFactoryImpl.getSessionFactory().openSession()) {
-            Query<CityResident> query = session.createQuery("FROM CityResident cr JOIN cr.city c WHERE cr.population = :population", CityResident.class);
+            Query<City> query = session.createQuery("SELECT c FROM City c WHERE :population = (SELECT SUM(cr.population) FROM CityResident cr WHERE cr.city = c)", City.class);
             query.setParameter("population", population);
             return query.list();
         } catch (Exception e) {

@@ -1,6 +1,7 @@
 package by.kirylarol.lab7.Service;
 
 import by.kirylarol.lab7.Dao.CityResidentDao;
+import by.kirylarol.lab7.Entity.City;
 import by.kirylarol.lab7.Entity.CityResident;
 import by.kirylarol.lab7.Entity.Resident;
 
@@ -38,11 +39,13 @@ public class CityResidentService {
         return cityResidentDao.getAllResidentByCityAndLanguage(cityId, language);
     }
 
-    public List<CityResident> getAllCityByPopulation(BigDecimal population) {
+    public List<City> getAllCityByPopulation(long population) {
         return cityResidentDao.getAllCityByPopulation(population);
     }
 
     public List<Resident> getOldestResidents() {
         return cityResidentDao.getOldestResidents();
     }
+
+
 }

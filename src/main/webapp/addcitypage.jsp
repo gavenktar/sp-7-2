@@ -10,16 +10,20 @@
 <html>
 <head>
 
-    <% List<Resident> residentList = (List<Resident>) request.getAttribute("ResidentList") %>
+    <% List<Resident> residentList = (List<Resident>) request.getAttribute("ResidentList"); %>
 
     <title>Добавить город</title>
-    <form id="addForm" action="http://localhost:8080/addcity">
-        <input type="text" pattern="[a-zA-Z]+" placeholder="Введите название города">
-        <input type="number" min="300" placeholder="Введите дату основания">
-        <select multiple="multiple">
-            <% if (!residentList.isEmpty()) {%>
+    <form id="addForm" method="post" action="<%= request.getContextPath()%>/newcity">
+        <input type="text" name="cityTitle" pattern="[a-zA-Z]+" placeholder="Введите название города">
+        <input type="number" name="date" min="300" placeholder="Введите дату основания">
+        <input type="number" name="square" min="300" placeholder="Введите площадь">
+        <input type="number" name="population" min="0" placeholder="Численность">
+        <select style="width: 200px" name="residents" multiple="multiple">
+            <% if (residentList!= null && !residentList.isEmpty()) {%>
             <% for (var resident : residentList) { %>
-            <option id="<%= resident.getResidentID()%> " value="<%=  resident.getName()%>"
+            <option id="<%= resident.getResidentID()%> " name="<%= resident.getResidentID()%>" value="<%= resident.getName()%>">
+                <%= resident.getName()%>
+            </option>
             <% }%>
             <% } %>
         </select>

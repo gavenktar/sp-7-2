@@ -38,6 +38,25 @@ public class CityDaoImpl implements CityDao {
         return null;
     }
 
+
+    public City getCityById(int cityID){
+        Transaction transaction = null;
+        City city = null;
+        try (Session session = SessionFactoryImpl.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            city = session.get(City.class, cityID);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+
+        return city;
+    }
+
+
     @Override
     public boolean deleteCity(int cityId) {
         Transaction transaction = null;

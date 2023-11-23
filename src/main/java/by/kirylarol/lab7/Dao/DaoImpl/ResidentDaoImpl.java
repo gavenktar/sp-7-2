@@ -5,6 +5,9 @@ import by.kirylarol.lab7.Entity.Resident;
 import by.kirylarol.lab7.SessionConf.SessionFactoryImpl;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
+import java.util.List;
 
 public class ResidentDaoImpl implements ResidentDao {
     @Override
@@ -62,4 +65,31 @@ public class ResidentDaoImpl implements ResidentDao {
         }
     }
 
+    @Override
+    public List<Resident> getAllResidents() {
+        try (Session session = SessionFactoryImpl.getSessionFactory().openSession()) {
+            String hql = "FROM Resident";
+            Query<Resident> query = session.createQuery(hql, Resident.class);
+            List<Resident> residents = query.list();
+            return residents;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public Resident getResidentByName(String name) {
+
+        try (Session session = SessionFactoryImpl.getSessionFactory().openSession()) {
+            String hql = "FROM Resident r WHERE r.name = :name";
+            Query<Resident> query = session.createQuery(hql, Resident.class);
+            query.setParameter("name", name);
+            List<Resident> residents = query.list();
+            return residents.isEmpty() ? null : residents.get(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
