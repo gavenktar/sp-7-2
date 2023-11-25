@@ -20,7 +20,7 @@ import java.math.BigDecimal;
 @WebServlet("/addresident")
 public class AddResidentServlet  extends HttpServlet {
 
-    ResidentService residentService = new ResidentService(new ResidentDaoImpl());
+    private ResidentService residentService = new ResidentService(new ResidentDaoImpl());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

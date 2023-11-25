@@ -23,8 +23,8 @@ import java.util.List;
 @WebServlet("/city")
 public class CityServlet extends HttpServlet {
 
-    CityService cityService = new CityService(new CityDaoImpl());
-    ResidentService residentService = new ResidentService(new ResidentDaoImpl());
+    private CityService cityService = new CityService(new CityDaoImpl());
+    private  ResidentService residentService = new ResidentService(new ResidentDaoImpl());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

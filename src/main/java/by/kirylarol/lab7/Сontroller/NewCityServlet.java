@@ -24,9 +24,9 @@ import java.util.List;
 @WebServlet("/newcity")
 public class NewCityServlet extends HttpServlet {
 
-    CityResidentService cityResidentService = new CityResidentService(new CityResidentDaoImpl());
-    ResidentService residentService = new ResidentService(new ResidentDaoImpl());
-    CityService cityService = new CityService(new CityDaoImpl());
+    private CityResidentService cityResidentService = new CityResidentService(new CityResidentDaoImpl());
+    private ResidentService residentService = new ResidentService(new ResidentDaoImpl());
+    private CityService cityService = new CityService(new CityDaoImpl());
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Resident> residentList = residentService.getALlResidents();

@@ -18,7 +18,7 @@ import java.util.List;
 @WebServlet ("/mainpage")
 public class MainPageServlet extends HttpServlet {
 
-    CityService cityService = new CityService(new CityDaoImpl());
+    private CityService cityService = new CityService(new CityDaoImpl());
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<City> cityList = cityService.getAll();

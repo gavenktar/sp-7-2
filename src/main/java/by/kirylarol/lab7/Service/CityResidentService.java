@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class CityResidentService {
-    CityResidentDao cityResidentDao;
+    private CityResidentDao cityResidentDao;
 
     public CityResidentService(CityResidentDao cityResidentDao) {
         this.cityResidentDao = cityResidentDao;

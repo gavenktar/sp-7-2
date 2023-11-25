@@ -6,7 +6,7 @@ import by.kirylarol.lab7.Entity.Resident;
 import java.util.List;
 
 public class ResidentService {
-    ResidentDao residentDao;
+    private ResidentDao residentDao;
 
 
     public List<Resident> getALlResidents (){ return this.residentDao.getAllResidents(); }

@@ -18,7 +18,6 @@
     <% if (cityResidents != null && !cityResidents.isEmpty()) { %>
     <% for (Resident resident : cityResidents) { %>
     <tr>
-        <td><%= resident.getResidentID() %></td>
         <td><%= resident.getName() %></td>
         <td><%= resident.getLanguage() %></td>
     </tr>

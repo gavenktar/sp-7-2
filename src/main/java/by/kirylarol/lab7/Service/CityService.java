@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CityService {
 
-    CityDao cityDao;
+    private final CityDao cityDao;
 
     public CityService(CityDao cityDao) {
         this.cityDao = cityDao;
